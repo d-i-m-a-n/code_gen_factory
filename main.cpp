@@ -3,28 +3,36 @@
 #include <iostream>
 
 #include "unit.h"
+#include "classunit.h"
+#include "methodunit.h"
+#include "printoperatorunit.h"
 
-std::string generateProgram() {
-    ClassUnit myClass( "MyClass" );
+#include "iprogrammfactory.h"
+#include "cppprogrammfactory.h"
 
-    myClass.add(std::make_shared<MethodUnit> ("testFunc1", "void", 0), ClassUnit::PUBLIC);
+std::string generateProgram(IProgrammFactory* programmFactory) {
+    auto myClass = programmFactory->createClassUnit("myClass");
 
-    myClass.add(std::make_shared<MethodUnit> ("testFunc2", "void", MethodUnit::STATIC), ClassUnit::PRIVATE);
+    myClass->add(programmFactory->createMethodUnit("testFunc1", "void", 0), ClassUnit::PUBLIC);
 
-    myClass.add(std::make_shared<MethodUnit> ("testFunc3", "void", MethodUnit::VIRTUAL | MethodUnit::CONST), ClassUnit::PUBLIC);
+    myClass->add(programmFactory->createMethodUnit("testFunc2", "void", MethodUnit::STATIC), ClassUnit::PRIVATE);
 
-    auto method = std::make_shared<MethodUnit> ("testFunc4", "void", MethodUnit::STATIC);
+    myClass->add(programmFactory->createMethodUnit("testFunc3", "void", MethodUnit::VIRTUAL | MethodUnit::CONST), ClassUnit::PUBLIC);
 
-    method->add(std::make_shared<PrintOperatorUnit> ( R"(Hello,world!\n)" ) );
+    auto method = programmFactory->createMethodUnit("testFunc4", "void", MethodUnit::STATIC);
 
-    myClass.add(method, ClassUnit::PROTECTED );
+    method->add(programmFactory->createPrintOperatorUnit(R"(Hello,world!\n)"));
 
-    return myClass.compile();
+    myClass->add(method, ClassUnit::PROTECTED );
+
+    return myClass->compile();
 }
 
-//----------------------------------------------------------------------------------------------------
 int main() {
- std::cout << generateProgram() << std::endl;
- return 0;
+    CPPProgrammFactory cppFactory;
+
+    std::cout << generateProgram(&cppFactory) << std::endl;
+
+    return 0;
 }
 

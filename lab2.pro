@@ -16,11 +16,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         classunit.cpp \
+        cppclassunit.cpp \
         cppprogrammfactory.cpp \
+        iprogrammfactory.cpp \
         main.cpp \
         methodunit.cpp \
         printoperatorunit.cpp \
-        programmabstractfactory.cpp \
         unit.cpp
 
 # Default rules for deployment.
@@ -30,8 +31,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     classunit.h \
+    cppclassunit.h \
     cppprogrammfactory.h \
+    iprogrammfactory.h \
     methodunit.h \
     printoperatorunit.h \
-    programmabstractfactory.h \
     unit.h

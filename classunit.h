@@ -17,13 +17,15 @@ public:
     static const std::vector<std::string> ACCESS_MODIFIERS;
 
 public:
-    explicit ClassUnit( const std::string& name );
+    explicit ClassUnit(const std::string& name);
 
     void add(const std::shared_ptr<Unit>& unit, Flags flags);
 
-    std::string compile(unsigned int level = 0) const;
+    virtual std::string compile(unsigned int level = 0) const = 0;
 
-private:
+    virtual ~ClassUnit() = default;
+
+protected:
     std::string m_name;
     using Fields = std::vector<std::shared_ptr<Unit>>;
     std::vector<Fields> m_fields;
