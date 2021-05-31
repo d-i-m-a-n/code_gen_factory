@@ -14,7 +14,7 @@ public:
 
     IProgrammFactory() = default;
 
-    virtual std::shared_ptr<ClassUnit> createClassUnit(const std::string& name) = 0;
+    virtual std::shared_ptr<ClassUnit> createClassUnit(const std::string& name, Flags classAccessMoifier) = 0;
 
     virtual std::shared_ptr<MethodUnit> createMethodUnit(const std::string& name, const std::string& returnType, Flags flags) = 0;
 

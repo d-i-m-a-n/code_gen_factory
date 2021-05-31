@@ -1,12 +1,12 @@
-#ifndef CPPPROGRAMMFACTORY_H
-#define CPPPROGRAMMFACTORY_H
+#ifndef JAVAPROGRAMMFACTORY_H
+#define JAVAPROGRAMMFACTORY_H
 
 #include "iprogrammfactory.h"
 
-class CPPProgrammFactory : public IProgrammFactory
+class JavaProgrammFactory : public IProgrammFactory
 {
 public:
-    CPPProgrammFactory();
+    JavaProgrammFactory();
 
     std::shared_ptr<ClassUnit> createClassUnit(const std::string& name, Flags classAccessMoifier) override;
 
@@ -15,4 +15,4 @@ public:
     std::shared_ptr<PrintOperatorUnit> createPrintOperatorUnit(const std::string& text) override;
 };
 
-#endif // CPPPROGRAMMFACTORY_H
+#endif // JAVAPROGRAMMFACTORY_H

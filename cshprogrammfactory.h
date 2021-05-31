@@ -1,12 +1,12 @@
-#ifndef CPPPROGRAMMFACTORY_H
-#define CPPPROGRAMMFACTORY_H
+#ifndef CSHPROGRAMMFACTORY_H
+#define CSHPROGRAMMFACTORY_H
 
 #include "iprogrammfactory.h"
 
-class CPPProgrammFactory : public IProgrammFactory
+class CSHProgrammFactory : public IProgrammFactory
 {
 public:
-    CPPProgrammFactory();
+    CSHProgrammFactory();
 
     std::shared_ptr<ClassUnit> createClassUnit(const std::string& name, Flags classAccessMoifier) override;
 
@@ -15,4 +15,4 @@ public:
     std::shared_ptr<PrintOperatorUnit> createPrintOperatorUnit(const std::string& text) override;
 };
 
-#endif // CPPPROGRAMMFACTORY_H
+#endif // CSHPROGRAMMFACTORY_H
