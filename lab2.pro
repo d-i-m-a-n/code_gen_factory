@@ -17,8 +17,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         classunit.cpp \
         cppclassunit.cpp \
+        cppmethodunit.cpp \
+        cppprintoperatorunit.cpp \
         cppprogrammfactory.cpp \
+        cshclassunit.cpp \
+        cshmethodunit.cpp \
+        cshprintoperatorunit.cpp \
+        cshprogrammfactory.cpp \
         iprogrammfactory.cpp \
+        javaclassunit.cpp \
+        javamethodunit.cpp \
+        javaprintoperatorunit.cpp \
+        javaprogrammfactory.cpp \
         main.cpp \
         methodunit.cpp \
         printoperatorunit.cpp \
@@ -32,8 +42,18 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     classunit.h \
     cppclassunit.h \
+    cppmethodunit.h \
+    cppprintoperatorunit.h \
     cppprogrammfactory.h \
+    cshclassunit.h \
+    cshmethodunit.h \
+    cshprintoperatorunit.h \
+    cshprogrammfactory.h \
     iprogrammfactory.h \
+    javaclassunit.h \
+    javamethodunit.h \
+    javaprintoperatorunit.h \
+    javaprogrammfactory.h \
     methodunit.h \
     printoperatorunit.h \
     unit.h

@@ -8,24 +8,31 @@
 class ClassUnit : public Unit
 {
 public:
+
     enum AccessModifier {
         PUBLIC,
         PROTECTED,
-        PRIVATE
+        PRIVATE,
+        INTERNAL,
+        PROTECTED_INTERNAL,
+        PRIVATE_PROTECTED,
+        FINAL,
+        ABSTRACT,
+
+        LAST
     };
 
-    static const std::vector<std::string> ACCESS_MODIFIERS;
-
 public:
-    explicit ClassUnit(const std::string& name);
+    ClassUnit() = default;
 
-    void add(const std::shared_ptr<Unit>& unit, Flags flags);
+    virtual void add(const std::shared_ptr<Unit>& unit, Flags flags) = 0;
 
     virtual std::string compile(unsigned int level = 0) const = 0;
 
     virtual ~ClassUnit() = default;
 
 protected:
+    Flags m_classAccessModifier;
     std::string m_name;
     using Fields = std::vector<std::shared_ptr<Unit>>;
     std::vector<Fields> m_fields;
